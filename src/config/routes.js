@@ -4,7 +4,7 @@ const routes = {
     womens: '/womens',
     kids: '/kids',
     products: 'product',
-    product: ':productId',
+    product: '/product/:productId',
     cart: '/cart',
     login: '/login',
 };
