@@ -33,3 +33,42 @@
         text-decoration: line-through;
     }
 }
+
+@media (max-width: 1280px) {
+    .item {
+        width: 220px;
+        font-size: 14px;
+    }
+
+    .item-prices {
+        .item-price-old {
+            font-size: 14px;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .item {
+        width: 170px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 800px) {
+    .item {
+        width: 120px;
+        font-size: 12px;
+    }
+
+    .item-prices {
+        .item-price-old {
+            font-size: 12px;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .item {
+        width: 160px;
+    }
+}
