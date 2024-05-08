@@ -4,7 +4,7 @@ import './Item.scss';
 const Item = ({ data }) => {
     return (
         <div className="item">
-            <Link to={`/product/${data.id}`}>
+            <Link to={`/product/${data.id}`} onClick={window.scrollTo(0, 0)}>
                 <img src={data.image} alt="" />
             </Link>
             <p>{data.name}</p>
