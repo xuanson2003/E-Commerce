@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './NewCollections.scss';
 import Item from '../Item/Item';
-import { useEffect } from 'react';
+import request from '~/utils/httpRequest';
 
 const NewCollections = () => {
     const [new_collections, setNew_collection] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:4000/newcollections')
-            .then((res) => res.json())
-            .then((data) => setNew_collection(data));
+        request({
+            method: 'get',
+            url: 'newcollections',
+        }).then((res) => {
+            setNew_collection(res.data);
+        });
     }, []);
 
     return (

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './CSS/LoginSignup.scss';
+import request from '~/utils/httpRequest';
 
 function LoginSignup() {
     const [state, setState] = useState('Login');
@@ -16,16 +17,17 @@ function LoginSignup() {
     const login = async () => {
         console.log('Login function', formData);
         let responseData;
-        await fetch('http://localhost:4000/login', {
-            method: 'POST',
+        await request({
+            method: 'post',
+            url: 'login',
             headers: {
                 Accept: 'application/form-data',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(formData),
-        })
-            .then((res) => res.json())
-            .then((data) => (responseData = data));
+            data: formData,
+        }).then((res) => {
+            responseData = res.data;
+        });
 
         if (responseData.success) {
             localStorage.setItem('auth-token', responseData.token);
@@ -38,16 +40,18 @@ function LoginSignup() {
     const signup = async () => {
         console.log('Sign up function', formData);
         let responseData;
-        await fetch('http://localhost:4000/signup', {
-            method: 'POST',
+
+        await request({
+            method: 'post',
+            url: 'signup',
             headers: {
                 Accept: 'application/form-data',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(formData),
-        })
-            .then((res) => res.json())
-            .then((data) => (responseData = data));
+            data: formData,
+        }).then((res) => {
+            responseData = res.data;
+        });
 
         if (responseData.success) {
             localStorage.setItem('auth-token', responseData.token);

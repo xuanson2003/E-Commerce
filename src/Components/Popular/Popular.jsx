@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import './Popular.scss';
 import Item from '~/Components/Item/Item';
+import request from '~/utils/httpRequest';
 
 const Popular = () => {
     const [popularProducts, setPopularProducts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:4000/poppularinwomen')
-            .then((res) => res.json())
-            .then((data) => {
-                setPopularProducts(data);
-            });
+        request({
+            method: 'get',
+            url: 'poppularinwomen',
+        }).then((res) => {
+            setPopularProducts(res.data);
+        });
     }, []);
     return (
         <div className="popular">
